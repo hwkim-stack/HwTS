@@ -44,10 +44,11 @@ for (const id in latest) {
 
 const won = (n) => '₩' + Math.round(n).toLocaleString('ko-KR');
 const draftCount = (state.videos || []).filter((v) => v.status === 'draft').length;
+const readyCount = (state.videos || []).filter((v) => v.status === 'ready').length;
 const liveCount = (state.videos || []).filter((v) => v.status === 'published').length;
 
 console.log('\n══════════ 🎬 미미 v2 콘텐츠 대시보드 ══════════');
-console.log(`반복: ${state.iteration}   단계: ${state.currentStep}   영상: 초안 ${draftCount} · 발행 ${liveCount}`);
+console.log(`반복: ${state.iteration}   단계: ${state.currentStep}   영상: 초안 ${draftCount} · 발행대기 ${readyCount} · 발행 ${liveCount}`);
 console.log(`실험: ${state.experiment.name}  (니치당 목표 ${state.experiment.perNiche}편)`);
 console.log('────────────────────────────────────────────');
 console.log(`총 조회수: ${totalViews.toLocaleString('ko-KR')}   총 추정수익: ${won(totalRev)}   🍗 ${Math.round((totalRev / chicken) * 100) / 100}마리`);
