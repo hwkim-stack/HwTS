@@ -9,6 +9,8 @@
     "serve": "node scripts/serve.mjs",
     "dev": "node scripts/build.mjs && node scripts/serve.mjs",
     "report": "node scripts/report.mjs",
-    "new": "node scripts/new-tool.mjs"
+    "new": "node scripts/new-tool.mjs",
+    "content:report": "node scripts/content-report.mjs",
+    "content:new": "node scripts/new-video.mjs"
   }
 }

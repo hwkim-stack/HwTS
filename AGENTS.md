@@ -1,17 +1,11 @@
-# CLAUDE.md — 미미(Mimi) 루프 프로젝트
-
-> **현재 활성: 미미 v2 (콘텐츠 공장).** SEO 한계(무명에게 노출이 닫힘)로 v1(웹툴)은 **보류**. 작업은 [CONTENT.md](CONTENT.md) + `/content-*` 명령 + `content/` 기준. 아래 v1 내용은 보존용.
-> - **v2 (활성)**: faceless 숏폼/유튜브 콘텐츠 + 알고리즘 분배. 명령 `/content-plan|make|ship|analyze|decide`, 상태 `content/state.json`, 스크립트 `scripts/content-*.mjs`, `npm run content:report|content:new`.
-> - **v1 (보류)**: 아래 ↓ (라이브: https://hwkim-stack.github.io/HwTS/ — 자산으로 유지)
-
----
+# AGENTS.md — 미미(Mimi) 루프 프로젝트
 
 이 저장소는 **AdSense 수익형 유틸리티 도구 사이트**(`ToolSeed`)와, 그것을 운영하는 **"미미" 자동 수익 루프**다.
 영감: mimi-seed-sdk (앱스토어 운영 자동화 MCP). 차이점: 여기서는 **앱이 아니라 웹**이고, **Anthropic API 키를 쓰지 않는다.**
 
 ## 핵심 원칙
-- **API 키 금지.** AI 판단이 필요한 단계는 사용자가 Claude Code(구독제)에서 `/mimi-*` 슬래시 명령으로 직접 실행한다. 코드에서 Anthropic/OpenAI API를 호출하지 말 것.
-- **결정 단계 = 슬래시 명령**(`.claude/commands/`), **단순 작업 = Node 스크립트**(`scripts/`).
+- **API 키 금지.** AI 판단이 필요한 단계는 사용자가 Codex(구독제)에서 `/mimi-*` 슬래시 명령으로 직접 실행한다. 코드에서 Anthropic/OpenAI API를 호출하지 말 것.
+- **결정 단계 = 슬래시 명령**(`.Codex/commands/`), **단순 작업 = Node 스크립트**(`scripts/`).
 - **사이트는 100% 정적**. 도구는 순수 클라이언트 JS만. 외부 라이브러리·네트워크 호출·백엔드 금지(무료 호스팅 + AdSense 호환).
 
 ## 루프 (기획→개발→운영→분석→P&L→기획)

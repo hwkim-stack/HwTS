@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "iteration": 0,
+  "currentStep": "plan",
+  "updatedAt": "2026-06-14",
+  "platformPrimary": "youtube",
+  "channels": [
+    { "name": "(미정)", "platform": "youtube", "url": "", "status": "준비중" }
+  ],
+  "experiment": {
+    "name": "니치 테스트 #1",
+    "goal": "서로 다른 3개 니치 중 알고리즘이 미는 것 찾기 (조회수·평균시청 기준)",
+    "perNiche": 3,
+    "niches": [
+      { "id": "money",   "title": "1분 금융/세금 상식",        "mechanism": "고RPM(광고)",   "monetize": "광고 + 제휴(카드/증권/앱)", "status": "testing" },
+      { "id": "mystery", "title": "1분 미스터리/실화 나레이션", "mechanism": "고리텐션",      "monetize": "광고",                  "status": "testing" },
+      { "id": "tools",   "title": "무료·AI 도구 1분 소개",      "mechanism": "트렌드+제휴",    "monetize": "제휴 + 광고",            "status": "testing" }
+    ]
+  },
+  "videos": [],
+  "decisions": [],
+  "log": [
+    { "date": "2026-06-14", "event": "미미 v2(콘텐츠 공장) 시작 — 니치 3개(money/mystery/tools) 테스트 설계" }
+  ]
+}

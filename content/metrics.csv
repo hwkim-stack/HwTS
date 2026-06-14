@@ -1,0 +1,4 @@
+videoId,date,platform,views,avgViewSec,ctr,revenue_krw
+# 업로드 후 유튜브 스튜디오 수치를 영상별로 추가하세요.
+# avgViewSec=평균 시청 지속 시간(초), ctr=노출클릭률(%), revenue_krw=추정 수익(원)
+# 예) money-1,2026-06-20,youtube,1530,18,4.2,120
