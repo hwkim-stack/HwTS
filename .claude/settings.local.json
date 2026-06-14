@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:mimi-seed.pryzm.gg)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(npm -v)",
+      "Bash(git --version)",
+      "Bash(node scripts/build.mjs)",
+      "Bash(node scripts/report.mjs)"
+    ]
+  }
+}

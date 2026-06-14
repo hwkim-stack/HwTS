@@ -1,0 +1,22 @@
+{
+  "siteName": "ToolSeed",
+  "tagline": "작지만 매일 쓰는 무료 온라인 도구",
+  "baseUrl": "https://example.com",
+  "basePath": null,
+  "cname": "",
+  "locale": "ko-KR",
+  "adsense": {
+    "enabled": true,
+    "publisherId": "ca-pub-XXXXXXXXXXXXXXXX",
+    "slots": {
+      "top": "0000000000",
+      "inContent": "0000000000",
+      "footer": "0000000000"
+    }
+  },
+  "economics": {
+    "currency": "KRW",
+    "chickenPriceKRW": 22000,
+    "domainCostPerYearKRW": 15000
+  }
+}

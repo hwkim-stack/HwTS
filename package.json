@@ -1,0 +1,14 @@
+{
+  "name": "mimi-toolseed",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Mimi loop + AdSense utility-tools site (no API key required)",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "report": "node scripts/report.mjs",
+    "new": "node scripts/new-tool.mjs"
+  }
+}

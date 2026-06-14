@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "iteration": 0,
+  "currentStep": "analyze",
+  "updatedAt": "2026-06-14",
+  "tools": [
+    { "slug": "percentage-calculator", "title": "퍼센트 계산기", "status": "live", "iteration": 0, "createdAt": "2026-06-14" },
+    { "slug": "word-counter", "title": "글자수 세기", "status": "live", "iteration": 0, "createdAt": "2026-06-14" },
+    { "slug": "password-generator", "title": "비밀번호 생성기", "status": "live", "iteration": 0, "createdAt": "2026-06-14" }
+  ],
+  "plan": null,
+  "decisions": [],
+  "log": [
+    { "date": "2026-06-14", "event": "프로젝트 부트스트랩 — 도구 3개로 시작" }
+  ]
+}

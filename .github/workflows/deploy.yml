@@ -1,0 +1,61 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 저장소 이름으로 basePath/baseUrl 자동 결정
+      # - <owner>.github.io  → 루트 (basePath 없음)
+      # - 그 외(프로젝트 사이트) → /<repo>
+      - name: Compute base path
+        id: bp
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          OWNER="${GITHUB_REPOSITORY%/*}"
+          if [ "$REPO" = "${OWNER,,}.github.io" ]; then
+            echo "base=" >> "$GITHUB_OUTPUT"
+            echo "url=https://${OWNER,,}.github.io" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=/$REPO" >> "$GITHUB_OUTPUT"
+            echo "url=https://${OWNER,,}.github.io/$REPO" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build
+        run: npm run build
+        env:
+          SITE_BASE_PATH: ${{ steps.bp.outputs.base }}
+          SITE_BASE_URL: ${{ steps.bp.outputs.url }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
