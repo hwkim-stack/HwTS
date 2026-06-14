@@ -6,11 +6,14 @@
   "tools": [
     { "slug": "percentage-calculator", "title": "퍼센트 계산기", "status": "live", "iteration": 0, "createdAt": "2026-06-14" },
     { "slug": "word-counter", "title": "글자수 세기", "status": "live", "iteration": 0, "createdAt": "2026-06-14" },
-    { "slug": "password-generator", "title": "비밀번호 생성기", "status": "live", "iteration": 0, "createdAt": "2026-06-14" }
+    { "slug": "password-generator", "title": "비밀번호 생성기", "status": "live", "iteration": 0, "createdAt": "2026-06-14" },
+    { "slug": "salary-calculator", "title": "연봉 실수령액 계산기", "status": "live", "iteration": 1, "createdAt": "2026-06-14" }
   ],
   "plan": null,
   "decisions": [],
   "log": [
-    { "date": "2026-06-14", "event": "프로젝트 부트스트랩 — 도구 3개로 시작" }
+    { "date": "2026-06-14", "event": "프로젝트 부트스트랩 — 도구 3개로 시작" },
+    { "date": "2026-06-14", "event": "GitHub Pages 첫 배포 — hwkim-stack/HwTS, https://hwkim-stack.github.io/HwTS/ 라이브" },
+    { "date": "2026-06-14", "event": "루프 1회 (기획→개발→운영): 연봉 실수령액 계산기 추가 — 고RPM(금융) 키워드 타깃, 2026 요율" }
   ]
 }
