@@ -13,6 +13,7 @@
     "content:report": "node scripts/content-report.mjs",
     "content:new": "node scripts/new-video.mjs",
     "content:tts": "node scripts/content/tts.mjs",
+    "content:bg": "node scripts/content/bg.mjs",
     "content:render": "node scripts/content/render.mjs",
     "content:video": "node scripts/content/video.mjs"
   }

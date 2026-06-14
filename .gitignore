@@ -5,6 +5,9 @@ capcut/
 content/videos/**/voice.mp3
 content/videos/**/*.mp4
 content/videos/**/*.png
+content/videos/**/*.jpg
+content/videos/**/*.jpeg
+mimi/secrets.json
 .claude/settings.local.json
 .DS_Store
 *.log

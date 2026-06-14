@@ -1,5 +1,6 @@
-// 4·5단계 자동화: 배경 + 자막(번인) + 음성 → 9:16 mp4  [FFmpeg, 무료]
-// 사용법: node scripts/content/render.mjs <videoId> [bgColor]
+// 4·5단계 자동화: 배경(이미지/영상/단색) + 자막(번인) + 음성 → 9:16 mp4  [FFmpeg]
+// 사용법: node scripts/content/render.mjs <videoId> [solidBgColor]
+//   폴더에 bg.mp4 있으면 영상 배경, bg.jpg/png 있으면 이미지 배경, 없으면 단색.
 import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
@@ -7,7 +8,6 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
-// tools/ 에 받은 정적 빌드에서 ffmpeg/ffprobe 찾기 → 없으면 시스템 PATH
 function findExe(dir, name) {
   if (!existsSync(dir)) return null;
   for (const e of readdirSync(dir, { withFileTypes: true })) {
@@ -22,23 +22,19 @@ const FFMPEG = findExe(toolsDir, 'ffmpeg.exe') || 'ffmpeg';
 const FFPROBE = findExe(toolsDir, 'ffprobe.exe') || 'ffprobe';
 
 const id = process.argv[2];
-const bg = process.argv[3] || '0x0E1320'; // 어두운 남색
-if (!id) { console.error('사용법: node scripts/content/render.mjs <videoId> [bgColor]'); process.exit(1); }
+const solid = process.argv[3] || '0x0E1320';
+if (!id) { console.error('사용법: node scripts/content/render.mjs <videoId> [solidBgColor]'); process.exit(1); }
 
 const dir = path.join(root, 'content', 'videos', id);
-const audio = path.join(dir, 'voice.mp3');
-const srt = path.join(dir, 'captions.srt');
-if (!existsSync(audio) || !existsSync(srt)) {
+if (!existsSync(path.join(dir, 'voice.mp3')) || !existsSync(path.join(dir, 'captions.srt'))) {
   console.error('voice.mp3 / captions.srt 가 없습니다. 먼저: node scripts/content/tts.mjs ' + id);
   process.exit(1);
 }
 
-// 음성 길이
 const probe = spawnSync(FFPROBE, ['-v', 'error', '-show_entries', 'format=duration', '-of', 'default=nw=1:nk=1', 'voice.mp3'], { cwd: dir, encoding: 'utf8' });
 const dur = parseFloat((probe.stdout || '').trim()) || 60;
 const total = (dur + 0.6).toFixed(2);
 
-// 자막 스타일 (큰 글씨·가운데·외곽선). 한글 폰트 = 맑은 고딕
 const style = [
   'Fontname=Malgun Gothic',
   'Fontsize=16',
@@ -52,19 +48,39 @@ const style = [
   'MarginV=120',
 ].join(',');
 
-// cwd=영상폴더 → 파일명만 써서 윈도우 경로 이스케이프 회피
+// 배경 소스 결정
+const pick = (names) => names.find((n) => existsSync(path.join(dir, n))) || null;
+const vid = pick(['bg.mp4']);
+const img = pick(['bg.jpg', 'bg.jpeg', 'bg.png']);
+const fill = 'scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30';
+
+let inputs, pre, srcLabel;
+if (vid) {
+  inputs = ['-stream_loop', '-1', '-i', vid];
+  pre = `${fill},drawbox=x=0:y=0:w=1080:h=1920:color=black@0.40:t=fill,`;
+  srcLabel = '영상 ' + vid;
+} else if (img) {
+  inputs = ['-loop', '1', '-i', img];
+  pre = `${fill},drawbox=x=0:y=0:w=1080:h=1920:color=black@0.45:t=fill,`;
+  srcLabel = '이미지 ' + img;
+} else {
+  inputs = ['-f', 'lavfi', '-i', `color=c=${solid}:s=1080x1920:r=30:d=${total}`];
+  pre = '';
+  srcLabel = '단색 ' + solid;
+}
+
 const args = [
   '-y',
-  '-f', 'lavfi', '-i', `color=c=${bg}:s=1080x1920:r=30:d=${total}`,
+  ...inputs,
   '-i', 'voice.mp3',
-  '-vf', `subtitles=captions.srt:force_style='${style}'`,
+  '-vf', `${pre}subtitles=captions.srt:force_style='${style}'`,
   '-c:v', 'libx264', '-preset', 'veryfast', '-pix_fmt', 'yuv420p',
   '-c:a', 'aac', '-b:a', '128k',
   '-shortest',
   `${id}.mp4`,
 ];
 
-console.log(`▶ 합성  ffmpeg=${path.basename(FFMPEG)}  길이=${dur.toFixed(1)}s  배경=${bg}`);
+console.log(`▶ 합성  배경=${srcLabel}  길이=${dur.toFixed(1)}s`);
 const r = spawnSync(FFMPEG, args, { cwd: dir, stdio: 'inherit' });
 if (r.status !== 0) { console.error('✗ 합성 실패 (위 로그 확인)'); process.exit(1); }
 console.log('✓ 완성:', path.relative(root, path.join(dir, id + '.mp4')));
