@@ -18,11 +18,14 @@
     ]
   },
   "videos": [
-    { "id": "money-1", "niche": "money", "title": "같은 연봉인데 옆자리보다 매달 덜 받는 이유", "status": "ready", "createdAt": "2026-06-14" }
+    { "id": "money-1",   "niche": "money",   "title": "같은 연봉인데 옆자리보다 매달 덜 받는 이유", "status": "ready", "createdAt": "2026-06-14" },
+    { "id": "mystery-1", "niche": "mystery", "title": "구글 지도에 일부러 가려둔 장소",            "status": "ready", "createdAt": "2026-06-14" },
+    { "id": "tools-1",   "niche": "tools",   "title": "외주비 굳는 무료 사이트 3개",              "status": "ready", "createdAt": "2026-06-14" }
   ],
   "decisions": [],
   "log": [
     { "date": "2026-06-14", "event": "미미 v2(콘텐츠 공장) 시작 — 니치 3개(money/mystery/tools) 테스트 설계" },
-    { "date": "2026-06-14", "event": "유튜브 채널 연결 @aslkqwpo-x7p · money-1 제작 패키지 완성(ready)" }
+    { "date": "2026-06-14", "event": "유튜브 채널 연결 @aslkqwpo-x7p · money-1 제작 패키지 완성(ready)" },
+    { "date": "2026-06-14", "event": "mystery-1·tools-1 패키지 완성(ready) — 니치 3개 동시 테스트 준비 완료" }
   ]
 }
