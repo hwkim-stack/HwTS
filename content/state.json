@@ -1,11 +1,11 @@
 {
   "version": 1,
   "iteration": 0,
-  "currentStep": "plan",
+  "currentStep": "ship",
   "updatedAt": "2026-06-14",
   "platformPrimary": "youtube",
   "channels": [
-    { "name": "(미정)", "platform": "youtube", "url": "", "status": "준비중" }
+    { "name": "@aslkqwpo-x7p", "platform": "youtube", "url": "https://www.youtube.com/@aslkqwpo-x7p", "status": "운영중" }
   ],
   "experiment": {
     "name": "니치 테스트 #1",
@@ -17,9 +17,12 @@
       { "id": "tools",   "title": "무료·AI 도구 1분 소개",      "mechanism": "트렌드+제휴",    "monetize": "제휴 + 광고",            "status": "testing" }
     ]
   },
-  "videos": [],
+  "videos": [
+    { "id": "money-1", "niche": "money", "title": "같은 연봉인데 옆자리보다 매달 덜 받는 이유", "status": "ready", "createdAt": "2026-06-14" }
+  ],
   "decisions": [],
   "log": [
-    { "date": "2026-06-14", "event": "미미 v2(콘텐츠 공장) 시작 — 니치 3개(money/mystery/tools) 테스트 설계" }
+    { "date": "2026-06-14", "event": "미미 v2(콘텐츠 공장) 시작 — 니치 3개(money/mystery/tools) 테스트 설계" },
+    { "date": "2026-06-14", "event": "유튜브 채널 연결 @aslkqwpo-x7p · money-1 제작 패키지 완성(ready)" }
   ]
 }
