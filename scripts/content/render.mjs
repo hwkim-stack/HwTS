@@ -34,7 +34,7 @@ const dur = parseFloat((spawnSync(FFPROBE, ['-v', 'error', '-show_entries', 'for
 const style = [
   'Fontname=Malgun Gothic', 'Fontsize=16', 'Bold=1',
   'PrimaryColour=&H00FFFFFF&', 'OutlineColour=&H00101010&',
-  'BorderStyle=1', 'Outline=3', 'Shadow=1', 'Alignment=2', 'MarginV=120',
+  'BorderStyle=1', 'Outline=3', 'Shadow=0', 'Alignment=2', 'MarginV=120',
 ].join(',');
 const subFilter = `subtitles=captions.srt:force_style='${style}'`;
 const fill = 'scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,fps=30';
