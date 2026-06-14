@@ -14,6 +14,7 @@
     "content:new": "node scripts/new-video.mjs",
     "content:tts": "node scripts/content/tts.mjs",
     "content:bg": "node scripts/content/bg.mjs",
+    "content:shots": "node scripts/content/bg-shots.mjs",
     "content:render": "node scripts/content/render.mjs",
     "content:video": "node scripts/content/video.mjs"
   }
